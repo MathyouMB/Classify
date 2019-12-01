@@ -21,8 +21,8 @@ function LoginPage() {
           <img src={logo} alt="nope" />
         </div>
         <div className="Login-input">
-          <input type="text" name="email" value={email} onChange={updateEmail} />
-          <input type="text" name="password" value={password} onChange={updatePassword} />
+          <input type="text" name="email" placeholder="Email" value={email} onChange={updateEmail} />
+          <input type="text" name="password" placeholder="Password" value={password} onChange={updatePassword} />
           <button>Login</button>
           <Link to="/signup">Sign Up</Link>
         </div>
