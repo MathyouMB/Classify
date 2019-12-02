@@ -48,6 +48,7 @@ function LoginPage(props) {
       });
     console.log(data);
     props.setProfile(data)
+
   }
   
   
@@ -60,7 +61,8 @@ function LoginPage(props) {
         <div className="Login-input">
           <input type="text" name="email" placeholder="Email" value={email} onChange={updateEmail} />
           <input type="text" name="password" placeholder="Password" value={password} onChange={updatePassword} />
-          <button onClick={queryData}>Login</button>
+          {/*<button onClick={queryData}>Login</button>*/}
+          <Link onClick={queryData} to="/match">Sign in</Link>
           <Link to="/signup">Sign Up</Link>
         </div>
       </div>

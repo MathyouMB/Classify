@@ -7,6 +7,39 @@ export const USERS = gql`
     }
   }
 `;
+
+export const USER = gql`
+query user($id: ID!){
+    user(id: $id){
+        id
+        firstName
+        lastName
+        email
+        school
+        courses{
+            name
+            code
+          }
+    }
+}
+`;
+
+export const FINDMATCH = gql`
+query findMatches($id: ID!){
+    findMatches(id: $id) {
+      id
+      firstName
+      lastName
+      email
+      courses{
+        id
+        name
+        code
+      }
+    }
+  }
+`;
+
 export const LOGIN = gql`
 query login($email: String!, $password: String!){
     login(email: $email, password: $password) {
@@ -14,6 +47,9 @@ query login($email: String!, $password: String!){
       firstName
       lastName
       email
+      courses{
+        id
+      }
     }
   }
 `;
