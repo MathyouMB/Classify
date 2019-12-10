@@ -38,19 +38,23 @@ function LoginPage(props) {
   })
 
   const queryData = async () =>{
-    let data = await client
-      .query({
-        query: LOGIN,
-        variables: {
-          "email": email,
-          "password": password
-        }
-      });
-    console.log(data);
-    props.setProfile(data)
+
+    if(email.length>0 && password.length>0){
+      let data = await client
+        .query({
+          query: LOGIN,
+          variables: {
+            "email": email,
+            "password": password
+          }
+        });
+      console.log(data);
+      props.setProfile(data)
+    }else{
+      console.log("invalid info...")
+    }
 
   }
-  
   
   return (
     <div className="Login-page">
