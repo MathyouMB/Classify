@@ -13,9 +13,14 @@
     margin-bottom: 30vh;
 }
 
+.Login-logo{
+    margin-bottom:3em;
+}
+
 .Login-input{
     display:flex;
     flex-direction: column;
+
     input{
         padding: 0.5em;
         width: 95vw;
