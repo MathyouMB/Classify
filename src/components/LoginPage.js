@@ -61,7 +61,7 @@ function LoginPage(props) {
         <div className="Login-input">
           <input type="text" name="email" placeholder="Email" value={email} onChange={updateEmail} />
           <input type="text" name="password" placeholder="Password" value={password} onChange={updatePassword} />
-          {/*<button onClick={queryData}>Login</button>*/}
+          <input type="input" className="login-button" onClick={queryData} value={"Login"}></input>
           <Link onClick={queryData} to="/match">Sign in</Link>
           <Link to="/signup">Sign Up</Link>
         </div>
