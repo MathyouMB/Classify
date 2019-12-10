@@ -56,7 +56,6 @@ function LoginPage(props) {
 
   }
   
-  
   return (
     <div className="Login-page">
       <div className="Login-elements">
