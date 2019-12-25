@@ -6,6 +6,7 @@ import cardsPage from './components/cardsPage'
 import profilePage from './components/ProfilePage'
 import MatchPage from './components/MatchPage'
 import './style/App.scss';
+import './style/input-style.scss';
 
 function App() {
 

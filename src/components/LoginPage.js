@@ -57,19 +57,32 @@ function LoginPage(props) {
   }
   
   return (
-    <div className="Login-page">
-      <div className="Login-elements">
-        <div className="Login-logo">
-          <img src={logo} alt="nope" />
-        </div>
-        <div className="Login-input">
-          <input type="text" name="email" placeholder="Email" value={email} onChange={updateEmail} />
-          <input type="text" name="password" placeholder="Password" value={password} onChange={updatePassword} />
-          <input type="input" className="login-button" onClick={queryData} value={"Login"}></input>
-          <Link onClick={queryData} to="/match">Sign in</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>
+    <div className="login-page">
+
+    <div className="login-page-container">
+      <div className="wrapper">
+        <img src="./logo192.png"></img>
       </div>
+      <br></br>
+      <br></br>
+      <div className="group">      
+        <input type="text" value={email} onChange={updateEmail} required></input>
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Email</label>
+      </div>
+
+      <div className="group">      
+        <input type="text" value={password} onChange={updatePassword} required></input>
+        <span className="highlight"></span>
+        <span className="bar"></span>
+        <label>Password</label>
+      </div>
+
+      <div className="wrapper">
+        <Link className="fancy-button bg-gradient1" onClick={queryData} to="/match"><span>Login</span></Link>
+      </div>
+    </div>
     </div>
   );
 }
