@@ -10,6 +10,28 @@ import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { tsPropertySignature } from '@babel/types';
 
+function CourseManager(props) {
+  const courses = []
+  for (let i = 0; i<props.courses.length;i++) {
+      courses.push(
+      <Course name={props.courses[i].name} code={props.courses[i].code}/>
+      )
+  }
+    return (
+      <>
+        {courses}       
+      </>
+    );
+}
+
+function Course(props) {
+  return (
+    <>
+    <span>{props.code}</span>
+    </>
+  );
+}
+
 
 function ProfilePage(props) {
 
@@ -59,6 +81,8 @@ function ProfilePage(props) {
           <div className="profile-page-container">
             <img className="profile-page-user-image" src="./profile.png"></img>
             <span className="profile-page-user-name">{user.firstName} {user.lastName}</span>
+            <span className="profile-page-user-name">{user.schools[0].name}</span>
+            <CourseManager courses={user.courses}/>
           </div>
         }
           {/*
