@@ -80,7 +80,7 @@ function LoginPage(props) {
       </div>
 
       <div className="wrapper">
-        <Link className="fancy-button bg-gradient1" onClick={queryData} to="/match"><span>Login</span></Link>
+        <Link className="fancy-button bg-gradient1" onClick={queryData} to="/profile"><span>Login</span></Link>
       </div>
     </div>
     </div>

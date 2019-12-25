@@ -13,6 +13,14 @@ import { tsPropertySignature } from '@babel/types';
 
 function ProfilePage(props) {
 
+    let [user,setUser] = useState({});
+    let [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if(loading){
+          getProfileData();
+        }
+    });
 
     const httpLink = createHttpLink({
         uri: 'https://classify-graphql-api.herokuapp.com/graphql',
@@ -21,27 +29,39 @@ function ProfilePage(props) {
         }
       })
     
-      const client = new ApolloClient({
-          link: httpLink,
-          cache: new InMemoryCache()
-      })
+    const client = new ApolloClient({
+        link: httpLink,
+        cache: new InMemoryCache()
+    })
 
-      let ID = 0;
-      const queryData = async () =>{
-        let data = await client
-          .query({
+    const getProfileData = async () =>{
+
+      const urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get('ID');
+      let data = await client
+        .query({
             query: USER,
             variables: {
-              "id":ID
-            }
-          });
-        console.log(data);
-        props.setProfile(data)
-      }
+                "id": parseInt(id)
+              }
+        });
+      setUser(data.data.user)
+      setLoading(false);
+      console.log(data.data.user);
+    }
     
   
     return (
-      <div onload={queryData} className="profile-Page">
+      <div className="profile-page">
+        {loading ? 
+          <span>Loading...</span>
+          : 
+          <div className="profile-page-container">
+            <img className="profile-page-user-image" src="./profile.png"></img>
+            <span className="profile-page-user-name">{user.firstName} {user.lastName}</span>
+          </div>
+        }
+          {/*
           <div className="profile-Elements">
               <div className="profile-Img">
                 <img src={logo} alt="nope" />
@@ -52,6 +72,8 @@ function ProfilePage(props) {
                 <p>List of courses</p>
               </div>
           </div>
+          */}
+          
       </div>
     );
   }
