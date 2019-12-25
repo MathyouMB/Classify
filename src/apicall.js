@@ -15,7 +15,9 @@ query user($id: ID!){
         firstName
         lastName
         email
-        school
+        schools{
+          name
+        }
         courses{
             name
             code
