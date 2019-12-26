@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../style/login.scss';
 import {Link, Redirect} from "react-router-dom";
-import logo from '../img/logo192.png';
-import {USERS} from '../apicall'
 import {LOGIN} from '../apicall'
-
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { createHttpLink } from 'apollo-link-http'

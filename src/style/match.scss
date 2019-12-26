@@ -1,0 +1,35 @@
+.user-banner{
+    width: 95%;
+    height: 6em;
+    background-color: white;
+    border-radius: 0.4em;
+    border-color: gray;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.08);
+    margin:auto;
+    display:flex;
+    flex-direction: row;
+}
+
+.user-profile-image{
+ width: 4em;
+ height: 4em;
+ margin-top:auto;
+ margin-bottom: auto;
+ border-radius: 50%;
+ margin-right: 2em;
+ margin-left:1em;
+}
+
+.user-manager{
+    margin-top:2em;
+    width:100%;
+
+}
+
+.user-info{
+    display:flex;
+    flex-direction: column;
+    margin-top:auto;
+    margin-bottom: auto;
+
+}
