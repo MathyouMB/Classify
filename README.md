@@ -1,6 +1,6 @@
 # Classify
 
-<img src="https://github.com/MathyouMB/Classify/raw/develop/public/appLogo.png" style="width: 120px;">
+<img src="https://github.com/MathyouMB/Classify/raw/develop/public/appLogo130.png">
 
 A web app that matches students together for studying based on classes, program, and school with Tinder style swiping.
 
