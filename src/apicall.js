@@ -44,6 +44,19 @@ query findMatches($id: ID!){
   }
 `;
 
+export const FINDCOMMONMATCH = gql`
+query findCommonMatches($id: ID!){
+  findCommonMatches(id: $id) {
+    id
+    firstName
+    lastName
+    email
+    biography
+  }
+}
+`;
+
+
 export const LOGIN = gql`
 query login($email: String!, $password: String!){
     login(email: $email, password: $password) {
