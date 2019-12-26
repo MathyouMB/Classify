@@ -10,7 +10,7 @@ import ProfilePage from './components/ProfilePage'
 import MatchPage from './components/MatchPage'
 import './style/App.scss';
 
-function NavBar() {
+function NavBar(props) {
   const userIcon = <FontAwesomeIcon icon={faUser} />
   const homeIcon = <FontAwesomeIcon icon={faHome} />
   const listIcon = <FontAwesomeIcon icon={faList} />
@@ -18,7 +18,7 @@ function NavBar() {
   return (
     <div className="navbar">
         <div className="navbar-button">
-            <div className="navbar-icon"><Link to="/login">{userIcon}</Link></div>
+            <div className="navbar-icon"><Link to={"profile?ID="+props.profile.id}>{userIcon}</Link></div>
         </div>
         <div className="navbar-button">
             <div className="navbar-icon"><Link to="/cards">{searchIcon}</Link></div>
@@ -72,7 +72,7 @@ function App() {
             <Route path="/cards" component={CardsPage} />
             <Route path="/match" component={() => <MatchPage profile={profile}/>} /> 
          {/*</AnimatedSwitch>*/}
-            {profile !== false ? <NavBar/> : ""}
+            {profile !== false ? <NavBar profile={profile}/> : ""}
             
        </Router>  
        

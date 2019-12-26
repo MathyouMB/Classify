@@ -1,7 +1,7 @@
 import React from "react";
 
 const cardStyles = {
-  background: "whitesmoke",
+  background: "white",
   borderRadius: 3,
   width: "350px",
   height: "500px",
