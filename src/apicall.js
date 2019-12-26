@@ -15,6 +15,7 @@ query user($id: ID!){
         firstName
         lastName
         email
+        biography
         schools{
           name
         }

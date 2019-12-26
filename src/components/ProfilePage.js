@@ -14,7 +14,7 @@ function CourseManager(props) {
   const courses = []
   for (let i = 0; i<props.courses.length;i++) {
       courses.push(
-      <Course name={props.courses[i].name} code={props.courses[i].code}/>
+        <Course key={props.courses[i].id} name={props.courses[i].name} code={props.courses[i].code}/>
       )
   }
     return (
@@ -82,6 +82,7 @@ function ProfilePage(props) {
             <img className="profile-page-user-image" src="./profile.png"></img>
             <span className="profile-page-user-name">{user.firstName} {user.lastName}</span>
             <span className="profile-page-user-name">{user.schools[0].name}</span>
+            <p>"{user.biography}"</p>
             <br></br>
             <span>Current Courses</span>
             <CourseManager courses={user.courses}/>
