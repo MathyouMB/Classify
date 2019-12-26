@@ -19,15 +19,12 @@ function NavBar() {
     <div className="navbar">
         <div className="navbar-button">
             <div className="navbar-icon"><Link to="/login">{userIcon}</Link></div>
-            <p className="navbar-p">Profile</p>
         </div>
         <div className="navbar-button">
             <div className="navbar-icon"><Link to="/cards">{searchIcon}</Link></div>
-            <p className="navbar-p">Search</p>
         </div>
         <div className="navbar-button">
             <div className="navbar-icon"><Link to="/matches">{listIcon}</Link></div>
-            <p className="navbar-p">Matches</p>
         </div>
         
     </div>
