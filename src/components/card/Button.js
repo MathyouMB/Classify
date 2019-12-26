@@ -4,7 +4,7 @@ const buttonStyles = {
   //padding: "24px 24px",
   width: "2.7em",
   height: "2.7em",
-  background: "whitesmoke",
+  background: "white",
   cursor: "pointer",
   border: "none",
   borderRadius: 3,

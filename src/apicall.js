@@ -34,6 +34,7 @@ query findMatches($id: ID!){
       firstName
       lastName
       email
+      biography
       courses{
         id
         name

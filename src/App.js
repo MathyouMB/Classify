@@ -71,7 +71,7 @@ function App() {
             <Route path="/login" component={() => <LoginPage profile={profile} setProfile={setProfile}/>} />
             <Route path="/signup" component={SignupPage} />
             <Route path="/profile" component={() => <ProfilePage profile={profile}/> } />
-            <Route path="/cards" component={CardsPage} />
+            <Route path="/cards" component={() => <CardsPage profile={profile}/>} />
             <Route path="/match" component={() => <MatchPage profile={profile}/>} /> 
          {/*</AnimatedSwitch>*/}
             {profile !== false ? <NavBar profile={profile}/> : ""}
