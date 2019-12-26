@@ -15,7 +15,7 @@ function User(props){
         <div className="user-banner">
             <img className="user-profile-image" src="./profile.png"></img>
             <div className="user-info">
-                <span>{props.user.firstName} {props.user.lastName}</span>
+                <span><b>{props.user.firstName} {props.user.lastName}</b></span>
                 <span>{props.user.biography}</span>
             </div>
         </div>
