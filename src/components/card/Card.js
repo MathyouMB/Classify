@@ -11,7 +11,7 @@ const cardStyles = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  boxShadow: "4px 8px 1px #9E9E9E",
+  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.08)",
   top: 0
 };
 
