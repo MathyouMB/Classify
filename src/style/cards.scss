@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Merriweather&display=swap");
 
-.cards-Page{
+.cards-page{
     display:flex;
     height: 100%;
     justify-content: center;
@@ -11,9 +11,11 @@
 
 .card-container{
     display:flex;
-    flex-direction: center;
+    justify-content: center;
     align-items: center;
     margin-bottom: 30vh;
+    margin-top:5vh;
+    width: 95%;
 }
 
 .card{

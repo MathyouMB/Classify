@@ -5,7 +5,8 @@ const buttonStyles = {
   background: "whitesmoke",
   cursor: "pointer",
   border: "none",
-  borderRadius: 3
+  borderRadius: 3,
+  marginTop: "3em"
 };
 
 const Button = ({ children, onClick }) => (
