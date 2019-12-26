@@ -92,7 +92,7 @@ function ProfilePage(props) {
             <span className="profile-page-user-name">{user.firstName} {user.lastName}</span>
             <span className="profile-page-user-name">{user.schools[0].name}</span>
             <p>"{user.biography}"</p>
-            <br></br>
+            <p>{user.email}</p>
             <span>Current Courses</span>
             <CourseManager courses={user.courses}/>
           </div>
