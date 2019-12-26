@@ -1,12 +1,18 @@
-import React, {Component} from "react";
+import React, { useEffect, useState } from 'react';
 import Swipeable from "react-swipy"
 
+import {FINDMATCH} from '../apicall'
 import Card from "./card/Card";
 import Button from "./card/Button";
 import '../style/cards.scss';
 import logo from '../img/logo192.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck,faTimes} from '@fortawesome/free-solid-svg-icons'
+import { ApolloProvider } from 'react-apollo'
+import { ApolloClient } from 'apollo-client'
+import { createHttpLink } from 'apollo-link-http'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { tsPropertySignature } from '@babel/types';
 
 const wrapperStyles = {position: "relative", width: "350px", height: "500px"};
 
@@ -26,6 +32,79 @@ const actionsStyles = {
   marginTop: 12,
 };
 
+function CardsPage(props){
+  let [cards, setCards] = useState([]);
+  let [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if(loading){
+      getMatches();
+    }
+  });
+
+  const httpLink = createHttpLink({
+    uri: 'https://classify-graphql-api.herokuapp.com/graphql',
+    headers: {
+        "Content-Type": "application/json",
+    }
+  })
+
+  const client = new ApolloClient({
+      link: httpLink,
+      cache: new InMemoryCache()
+  })
+
+  const getMatches = async () =>{
+
+    let data = await client
+      .query({
+          query: FINDMATCH,
+          variables: {
+              "id": parseInt(props.profile.id)
+            }
+      });
+    setCards(data.data.findMatches)
+    setLoading(false);
+    console.log(data.data.findMatches);
+  }
+
+  const remove = () => {
+    setCards(cards.slice(1, cards.length))
+  };
+
+  return (
+    <div className="cards-page">
+      {loading ? 
+          <span>Loading...</span>
+          : 
+          <div className="card-container">
+                <div style={wrapperStyles}>
+                {cards.length > 0 ? (
+                    <div style={wrapperStyles}>
+                    <Swipeable
+                        buttons={({left, right}) => (
+                        <div style={actionsStyles}>
+                            <Button id="card-reject-button" onClick={left}>{timesIcon}</Button>
+                            <Button id="card-accept-button" onClick={right}>{checkIcon}</Button>
+                        </div>
+                        )}
+                        onAfterSwipe={remove}
+                    >
+                        <Card>{<div className="card"> <img className="profile-page-user-image" src="./profile.png"></img><h1>{cards[0].firstName} {cards[0].lastName}</h1><p>"{cards[0].biography}"</p><p>Number of similar class: {cards[0][1]}</p></div>}</Card>
+                    </Swipeable>
+                    {cards.length > 1 && <Card zIndex={-1}>{<div className="card"> <img className="profile-page-user-image" src="./profile.png"></img><h1>{cards[1].firstName} {cards[1].lastName}</h1><p>"{cards[1].biography}"</p><p>Number of similar class: {cards[0][1]}</p></div>}</Card>}
+                    </div>
+                    ) : (
+                    ""
+                    )}
+                    <Card zIndex={-2}>No More Users</Card>
+                </div>
+        </div>
+      }
+    </div>
+  )
+}
+/*
 class CardsPage extends Component {
   state = {
     //cards: ["First", "Second", "Third"],
@@ -68,5 +147,6 @@ class CardsPage extends Component {
     );
   }
 }
+*/
 
 export default CardsPage;
