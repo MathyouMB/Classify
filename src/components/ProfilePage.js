@@ -14,7 +14,7 @@ function CourseManager(props) {
   const courses = []
   for (let i = 0; i<props.courses.length;i++) {
       courses.push(
-      <Course name={props.courses[i].name} code={props.courses[i].code}/>
+        <Course key={props.courses[i].id} name={props.courses[i].name} code={props.courses[i].code}/>
       )
   }
     return (
