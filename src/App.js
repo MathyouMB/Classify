@@ -8,9 +8,18 @@ import ProfilePage from './components/ProfilePage'
 import MatchPage from './components/MatchPage'
 import './style/App.scss';
 
+function NavBar() {
+  return (
+    <div className="navbar">
+
+    </div>
+  );
+}
+
+
 function App() {
 
-  let [profile,setProfile] = useState({});
+  let [profile,setProfile] = useState(false);
 
   useEffect(() => {
     console.log("profile");
@@ -34,7 +43,10 @@ function App() {
             <Route path="/cards" component={CardsPage} />
             <Route path="/match" component={() => <MatchPage profile={profile}/>} /> 
          {/*</AnimatedSwitch>*/}
+            {profile !== false ? <NavBar/> : ""}
+            
        </Router>  
+       
     </div>
   
   );

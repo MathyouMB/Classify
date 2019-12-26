@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../style/login.scss';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import logo from '../img/logo192.png';
 import {USERS} from '../apicall'
 import {LOGIN} from '../apicall'
@@ -16,6 +16,8 @@ function LoginPage(props) {
   //reading text box
   let [email,setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let [redirect, setRedirect] = useState(false);
+
   const updateEmail = (event) => {
     setEmail(event.target.value);
     console.log("email: "+email);
@@ -24,6 +26,12 @@ function LoginPage(props) {
     setPassword(event.target.value);
     console.log("password: "+password);
   }
+
+  useEffect(() => {
+    if(props.profile.id != null){
+      setRedirect(true);
+    }
+  })
 
   const httpLink = createHttpLink({
     uri: 'https://classify-graphql-api.herokuapp.com/graphql',
@@ -48,17 +56,23 @@ function LoginPage(props) {
             "password": password
           }
         });
-      console.log(data);
-      props.setProfile(data)
+      console.log(data.data.login);
+      props.setProfile(data.data.login)
     }else{
       console.log("invalid info...")
     }
 
   }
+
+  const renderRedirect = () => {
+    if (redirect) {
+      return <Redirect to = {"/profile?ID="+props.profile.id} />
+    }
+  }
   
   return (
     <div className="login-page">
-
+    {renderRedirect()}
     <div className="login-page-container">
       <div className="wrapper">
         <img src="./logo192.png"></img>
@@ -80,7 +94,7 @@ function LoginPage(props) {
       </div>
 
       <div className="wrapper">
-        <Link className="fancy-button bg-gradient1" onClick={queryData} to={"/profile?ID="+props.profile.id}><span>Login</span></Link>
+        <a className="fancy-button bg-gradient1" onClick={queryData}><span>Login</span></a>
       </div>
     </div>
     </div>
