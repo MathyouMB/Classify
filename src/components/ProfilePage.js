@@ -37,11 +37,19 @@ function ProfilePage(props) {
 
     let [user,setUser] = useState({});
     let [loading, setLoading] = useState(true);
+    let [id, setId] = useState(-1);
 
     useEffect(() => {
-        if(loading){
-          getProfileData();
-        }
+      if(loading){
+        getProfileData();
+      }else{
+
+      const urlParams = new URLSearchParams(window.location.search);
+      let idParam = urlParams.get('ID');
+      if(idParam != id){
+        getProfileData();
+      }
+     }
     });
 
     const httpLink = createHttpLink({
@@ -68,6 +76,7 @@ function ProfilePage(props) {
               }
         });
       setUser(data.data.user)
+      setId(id);
       setLoading(false);
       console.log(data.data.user);
     }
