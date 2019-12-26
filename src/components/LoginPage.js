@@ -87,7 +87,7 @@ function LoginPage(props) {
       </div>
 
       <div className="group">      
-        <input type="text" value={password} onChange={updatePassword} required></input>
+        <input type="password" value={password} onChange={updatePassword}  required></input>
         <span className="highlight"></span>
         <span className="bar"></span>
         <label>Password</label>
