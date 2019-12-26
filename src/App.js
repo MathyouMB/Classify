@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Switch, Link } from "react-router-dom";
 import { AnimatedSwitch } from 'react-router-transition';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser,faHome,faList, faSearch} from '@fortawesome/free-solid-svg-icons'
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage'
 import CardsPage from './components/CardsPage'
@@ -9,9 +11,25 @@ import MatchPage from './components/MatchPage'
 import './style/App.scss';
 
 function NavBar() {
+  const userIcon = <FontAwesomeIcon icon={faUser} />
+  const homeIcon = <FontAwesomeIcon icon={faHome} />
+  const listIcon = <FontAwesomeIcon icon={faList} />
+  const searchIcon = <FontAwesomeIcon icon={faSearch} />
   return (
     <div className="navbar">
-
+        <div className="navbar-button">
+            <div className="navbar-icon"><Link to="/login">{userIcon}</Link></div>
+            <p className="navbar-p">Profile</p>
+        </div>
+        <div className="navbar-button">
+            <div className="navbar-icon"><Link to="/cards">{searchIcon}</Link></div>
+            <p className="navbar-p">Search</p>
+        </div>
+        <div className="navbar-button">
+            <div className="navbar-icon"><Link to="/matches">{listIcon}</Link></div>
+            <p className="navbar-p">Matches</p>
+        </div>
+        
     </div>
   );
 }
@@ -20,15 +38,27 @@ function NavBar() {
 function App() {
 
   let [profile,setProfile] = useState(false);
+  let [redirect, setRedirect] = useState(true);
 
   useEffect(() => {
     console.log("profile");
     console.log(profile)
+
+    if(profile.id != null){
+      setRedirect(false);
+    }
   })
+
+  const renderRedirect = () => {
+    if (redirect) {
+      return <Redirect to = {"/login"} />
+    }
+  }
 
   return (
     <div className="App">
        <Router>
+       {renderRedirect()}
          {/*
         <AnimatedSwitch
           atEnter={{ opacity: 0 }}

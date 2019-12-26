@@ -2,6 +2,12 @@
     height: 100vh;
 }
 
+@mixin gradientBg($startColor, $endColor) {
+	color: $startColor;
+	color: -moz-linear-gradient(left,  $startColor 0%, $endColor 80%,$endColor 100%);
+	color: -webkit-linear-gradient(left,  $startColor 0%, $endColor 80%,$endColor 100%);
+	color: linear-gradient(to right,  $startColor 0%, $endColor 80%,$endColor 100%);
+}
 
 .navbar{
     position:fixed;
@@ -9,13 +15,44 @@
     bottom:0em;
     width:100%;
     //border-top:1em;
-    border-color:#E0E7DD;
+    border-color:rgb(209, 208, 208);
     //border-top-width:0.5em;
     border-width:0.05em;
     border-style: solid;
-
-    background-color:rgb(179, 177, 177);
-    color:#BFBFBF;
+    @include gradientBg(#52A0FD, #00e2fa);
+    background-color:rgb(243, 243, 243);
+    color: #52A0FD;
     display:flex;
     justify-content: space-evenly;
+
+    a {
+        @include gradientBg(#52A0FD, #00e2fa);
+        text-decoration: none;
+    }
+    
+    a:hover 
+    {
+        @include gradientBg(#52A0FD, #00e2fa);
+         text-decoration:none; 
+         cursor:pointer;  
+    }
+}
+
+
+.navbar-icon{
+    margin:auto;
+    margin-bottom:0em;
+    font-size:2em;
+}
+
+.navbar-button{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.navbar-p{
+    margin:auto;
+    margin-top:0.5em;
+    font-size:0.8em;
 }
