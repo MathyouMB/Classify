@@ -5,7 +5,6 @@ import {FINDMATCH, ADDTOMATCHLIST, ADDTOBLACKLIST} from '../apicall'
 import Card from "./card/Card";
 import Button from "./card/Button";
 import '../style/cards.scss';
-import logo from '../img/logo192.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck,faTimes} from '@fortawesome/free-solid-svg-icons'
 import { ApolloProvider } from 'react-apollo'

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import '../style/profile.scss';
-import logo from '../img/logo192.png';
 
 import {USER} from '../apicall'
 

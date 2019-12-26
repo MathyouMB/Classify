@@ -1,7 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
 import '../style/match.scss';
-import logo from '../img/logo192.png';
 import {Link} from "react-router-dom";
 import {FINDCOMMONMATCH} from '../apicall'
 
