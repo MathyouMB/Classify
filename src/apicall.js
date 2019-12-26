@@ -56,6 +56,24 @@ query findCommonMatches($id: ID!){
 }
 `;
 
+export const ADDTOMATCHLIST = gql`
+mutation($profileId: Int!,$userId:Int!){
+  addUserToMatchlist(
+    profileId: $profileId,
+    userId:$userId
+  )
+}
+`;
+
+
+export const ADDTOBLACKLIST = gql`
+mutation($profileId: Int!,$userId:Int!){
+  addUserToBlacklist(
+    profileId: $profileId,
+    userId:$userId
+  )
+}
+`;
 
 export const LOGIN = gql`
 query login($email: String!, $password: String!){
