@@ -48,9 +48,11 @@ function App() {
 
   const renderRedirect = () => {
     //shandra@bayer.net
-    if (redirect) {
+    //kareem@langosh.com
+    /*if (redirect) {
       return <Redirect to = {"/login"} />
     }
+    */
   
   }
 
