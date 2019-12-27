@@ -10,7 +10,7 @@ Classify is a web application that matches students together for studying based 
 
 
 # Schema
-<img src="https://cdn.discordapp.com/attachments/490220076163792896/653669452323356683/unknown.png"></img>
+<img src="https://github.com/MathyouMB/Classify/blob/develop/public/erd.png"></img>
 
 # Todos
 - rspec/jest tests
