@@ -6,6 +6,8 @@ Classify is a web application that matches students together for studying based 
 
 # Screenshots
 
+![alt-text-1](https://github.com/MathyouMB/Classify/blob/develop/public/swipe.gif "title-1") ![alt-text-2](https://github.com/MathyouMB/Classify/blob/develop/public/login.png "title-2")
+
 
 ## Current ERD
 <img src="https://cdn.discordapp.com/attachments/490220076163792896/653669452323356683/unknown.png"></img>
