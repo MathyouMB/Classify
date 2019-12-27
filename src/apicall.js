@@ -40,6 +40,9 @@ query findMatches($id: ID!){
         name
         code
       }
+      schools{
+        name
+      }
     }
   }
 `;

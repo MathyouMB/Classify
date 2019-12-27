@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Swipeable from "react-swipy"
-
 import {FINDMATCH, ADDTOMATCHLIST, ADDTOBLACKLIST} from '../apicall'
 import Card from "./card/Card";
 import Button from "./card/Button";
@@ -33,6 +32,7 @@ const actionsStyles = {
 
 function CardsPage(props){
   let [cards, setCards] = useState([]);
+  let [similarCourses, setSimilarCourses] = useState([]);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -63,8 +63,30 @@ function CardsPage(props){
             }
       });
     setCards(data.data.findMatches)
-    setLoading(false);
-    console.log(data.data.findMatches);
+    calcClasses();
+    
+  }
+
+  const calcClasses = async () => {
+
+    let similarCounts = []
+   
+      let count =0; 
+      for(let i =0; i<cards.length;i++){ //each user
+        for(let j=0; j<cards[i].courses.length; j++){ // each users course
+          for(let x=0; x<props.profile.courses.length;x++){ //each profile course
+            if(cards[i].courses[j].id == props.profile.courses[x].id){
+              count++;
+            }
+          }
+        }
+
+        similarCounts.push(count);
+        count = 0;
+     }
+
+     await setSimilarCourses(similarCounts);
+     setLoading(false);
   }
 
   const addToMatchlist = async () =>{
@@ -92,7 +114,8 @@ function CardsPage(props){
   }
 
   const remove = () => {
-    setCards(cards.slice(1, cards.length))
+    setCards(cards.slice(1, cards.length));
+    setSimilarCourses(similarCourses.slice(1, similarCourses.length));
   };
 
   return (
@@ -112,12 +135,30 @@ function CardsPage(props){
                         </div>
                         )}
                        // onSwipe={"left", 0, console.log("left")}
-                        onAfterSwipe={remove}
-                        
+                        onAfterSwipe={remove}    
                     >
-                        <Card>{<div className="card"> <img className="profile-page-user-image" src="./profile.png"></img><h1>{cards[0].firstName} {cards[0].lastName}</h1><p>"{cards[0].biography}"</p><p>Number of similar class: {cards[0][1]}</p></div>}</Card>
+                        <Card>
+                          {<div className="card"> 
+                          <img className="profile-page-user-image" src="./profile.png"></img>
+                          <h1>{cards[0].firstName} {cards[0].lastName}</h1>
+                          <p>"{cards[0].biography}"</p>
+                          <p>Number of matching courses: <b>{similarCourses[0]}</b></p>
+                          </div>}
+                        </Card>
+
                     </Swipeable>
-                    {cards.length > 1 && <Card zIndex={-1}>{<div className="card"> <img className="profile-page-user-image" src="./profile.png"></img><h1>{cards[1].firstName} {cards[1].lastName}</h1><p>"{cards[1].biography}"</p><p>Number of similar class: {cards[0][1]}</p></div>}</Card>}
+                    {cards.length > 1 && 
+                    
+                    <Card zIndex={-1}>
+                      {<div className="card"> 
+                      <img className="profile-page-user-image" src="./profile.png"></img>
+                      <h1>{cards[1].firstName} {cards[1].lastName}</h1>
+                      <p>"{cards[1].biography}"</p>
+                      <p>Number of matching courses: <b>{similarCourses[1]}</b></p>
+                      </div>}
+                    </Card>
+
+                    }
                     </div>
                     ) : (
                     ""
