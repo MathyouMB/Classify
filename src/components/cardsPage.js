@@ -18,12 +18,6 @@ const checkIcon = <FontAwesomeIcon icon={faCheck} />
 const timesIcon = <FontAwesomeIcon icon={faTimes} />
 
 
-const user = [
-    ["John Doe",5],
-    ["Matthew M-B",4],
-    ["Iain M",3]
-]
-
 const actionsStyles = {
   display: "flex",
   justifyContent: "space-between",
